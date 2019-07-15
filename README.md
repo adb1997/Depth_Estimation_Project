@@ -29,4 +29,8 @@ It runs with Numpy and Pillow under Python 3. Image formatting is handled by PIL
 `stereoGold.cpp` is the primary code for stereo-correspondence computation. The images are padded with a boundary of zeroes in order minimise loss of data from the edge. Following padding, the search range can be set in the code (has to be between 0-255). 
 With every pass, the target image is shifted to the right and SAD is calculated. The shift for the minimum SAD value accumulated from the window over the center pixel is stored as the disparity. Histogram equalization is done before outputting array to reconstruct disparity image. 
 
+To run: 
+
+Compile code with gcc and run. 
+
 
