@@ -4,7 +4,17 @@ Estimation of dense depth information of the surroundings is required in applica
 
 ## Census Transform on Python 
 
-`python_census.py` is a Python model of the Census transform stereo algorithm, useful for evaluating accuracy of a given parameter set. 
+`python_census.py` is a Python model of the Census transform stereo algorithm, useful for evaluating accuracy of a given parameter set.
+
+The algorithm for census transform is as follows:
+
+1. For a pixel in the reference image, find it’s census vector 
+  a. For calculating the census vector, take a window around the pixel.
+  b. Compare every pixel in the window to the center pixel. If its intensity value is greater than the center pixel, assign it as     one if greater than center or 0 if lesser.                  
+  c. Make a vector consisting of 0s and 1s from above assignments
+2. Calculate the census vectors for the corresponding pixels in the right image. The number of pixels for which the census vector is to be calculated is equal to the search range decided by the user.
+3. Compute the Hamming Distances for Census vectors in the right image with Census vector in the left image.
+4. The index of the window corresponding to the Census vector with minimum hamming distance is the disparity
 
 To run:
 
@@ -16,4 +26,7 @@ It runs with Numpy and Pillow under Python 3. Image formatting is handled by PIL
 
 `pgmIO.cpp` is used for reading in pair of stereo images in PGM format and storing in linear array for further processing. 
 
-`stereoGold.cpp` is the primary code for stereo-correspondence computation. The images are padded with a boundary of zeroes in order minimise loss of data from the edge. Following padding, the search range can be set in the code (has to be between 0-255).  
+`stereoGold.cpp` is the primary code for stereo-correspondence computation. The images are padded with a boundary of zeroes in order minimise loss of data from the edge. Following padding, the search range can be set in the code (has to be between 0-255). 
+With every pass, the target image is shifted to the right and SAD is calculated. The shift for the minimum SAD value accumulated from the window over the center pixel is stored as the disparity. Histogram equalization is done before outputting array to reconstruct disparity image. 
+
+
