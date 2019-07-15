@@ -31,6 +31,9 @@ With every pass, the target image is shifted to the right and SAD is calculated.
 
 To run: 
 
-Compile code with gcc and run. 
+<code> gcc main.cpp pgmIO.cpp stereo_gold.cpp -o executable.o </code>
+
+
+
 
 
