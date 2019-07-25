@@ -2,7 +2,7 @@
 
 Estimation of dense depth information of the surroundings is required in applications like navigation, sensing and 3D modelling of environment, path planning, obstacle avoidance, surveillance and so on for intelligent robots, drones, autonomous vehicles etc. Stereo vision based depth perception is a stereoscopic ranging technique, useful to estimate the 3D profile of the scene from the 2D stereo image pair. Depth is perceived by computing the disparity from inter image correspondence, of the stereo image pair, which is highly computational intensive and achieving this in real time is a greatly challenging task. Specifically, census transform and sum of absolute difference (SAD) algorithms are tested on various platforms to test their accuracy and explore their deployability on Zedboard FPGA.
 
-### Census Transform on Verilog for FPGA
+## Census Transform on Verilog for FPGA
 
 The verilog code for the implementation of depth perception is in the StereoCensus-verilog-impl-Census sub-directory. The left and right image are from the Middlebury Cones dataset. Additonal information specified in sub-directory.  
 
